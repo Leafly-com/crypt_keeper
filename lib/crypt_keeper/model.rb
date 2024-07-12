@@ -69,7 +69,7 @@ to be used for encryption"
         end
 
         crypt_keeper_fields.each do |field|
-          serialize field, encryptor
+          serialize field, coder: encryptor
         end
       end
 
@@ -120,7 +120,7 @@ to be used for encryption"
       def encryptor_klass
         @encryptor_klass ||= "CryptKeeper::Provider::#{crypt_keeper_encryptor.to_s.camelize}".constantize
       rescue NameError
-        # couldn’t constantize... 
+        # couldn’t constantize...
         nil
       end
 
